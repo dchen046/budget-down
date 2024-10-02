@@ -9,13 +9,17 @@ const create_add_event = () => {
 }
 
 const update_table = () => {
-    const item = document.getElementById("item").value;
-    const price = document.getElementById("price").value;
-    ++item_counter;
-    total_expenses += Number(price);
-    const data = [item, price]
-    const table_content = document.getElementById("table-content");
-    table_content.appendChild(create_table_data(data));
+    const item = document.getElementById("item");
+    const price = document.getElementById("price");
+    if (item.value !== "" && price.value !== "") {
+        ++item_counter;
+        total_expenses += Number(price.value);
+        const data = [item.value, price.value]
+        const table_content = document.getElementById("table-content");
+        table_content.appendChild(create_table_data(data));
+        item.value = "";
+        price.value = "";
+    }
 }
 
 const create_table_data = (data) => {
@@ -93,7 +97,7 @@ const add_delete_event = (btn) => {
         }
         content.removeChild(row);
         total_expenses -= Number(data.innerText);
-        
+
     });
 }
 
