@@ -53,7 +53,7 @@ const create_segment_controls = (parent, id, text) => {
     for (const [key, value] of input_attr) {
         seg_input.setAttribute(key, value);
     }
-    seg_input.setAttribute("id", `${id}${item_counter}`);
+    seg_input.setAttribute("id", `${id + item_counter}`);
 
     const label_classes = ["btn", "btn-sm", "btn-outline-secondary"]
     for (let i = 0; i < label_classes.length; ++i) {
@@ -91,11 +91,6 @@ const add_delete_event = (btn) => {
         total_expenses -= data.value;
         update_item_num
     });
-}
-
-const update_item_num = () => {
-    const rows = document.querySelectorAll("tr");
-    console.log(rows);
 }
 
 create_add_event();

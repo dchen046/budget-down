@@ -19,58 +19,62 @@
 
 <body>
     <div class="container">
-        <header class="text-center">
-            <h1>Budget Down</h1>
-        </header>
-    </div>
-
-    <div class="container d-flex">
         <div class="container">
-            <div class="text-center mb-3">
-                <h2>Expenses</h2>
-                <div class="input-group">
-                    <input type="text" aria-label="Item" class="form-control" placeholder="Item" id="item">
-                    <input type="number" aria-label="Price" class="form-control" placeholder="Price"
-                        aria-describedby="btn-addon" id="price">
-                    <button class="btn btn-outline-secondary" type="button" id="btn-addon">Add</button>
-                </div>
-            </div>
-
-            <div id="item-list">
-                <h4>Items</h4>
-
-                <div class="table-responsive">
-                    <table class="table table-striped align-top w-auto">
-                        <thead>
-                            <tr class="text-center">
-                                <th scope="col">Item</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-content"></tbody>
-                    </table>
-                </div>
-            </div>
+            <header class="text-center">
+                <h1>Budget Down</h1>
+            </header>
         </div>
 
-        <div class="container">
-            <div class="text-center mb-3">
-                <h2>Income</h2>
-                <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Monthly Income" aria-label="Monthly Income"
-                        aria-describedby="calc-btn" id="monthly-income">
-                    <button class="btn btn-outline-success" type="button" id="calc-btn">Calculate</button>
+        <div class="container row d-flex">
+
+            <div class="col">
+                <div class="text-center mb-3">
+                    <h2>Income</h2>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Monthly Income"
+                            aria-label="Monthly Income" aria-describedby="calc-btn" id="monthly-income">
+                        <button class="btn btn-outline-success" type="button" id="calc-btn">Calculate</button>
+                    </div>
+                </div>
+
+                <div class="summary">
+                    <h4>Summary</h4>
+                    <div id="summary-contents">
+
+                    </div>
                 </div>
             </div>
 
-            <div class="summary">
-                <h4>Summary</h4>
-                <div id="summary-contents">
-                    Placeholder
+            <div class="col">
+                <div class="text-center mb-3">
+                    <h2>Expenses</h2>
+                    <div class="input-group">
+                        <input type="text" aria-label="Item" class="form-control" placeholder="Item" id="item">
+                        <input type="number" aria-label="Price" class="form-control" placeholder="Price"
+                            aria-describedby="btn-addon" id="price">
+                        <button class="btn btn-outline-secondary" type="button" id="btn-addon">Add</button>
+                    </div>
+                </div>
+
+                <div id="item-list">
+                    <h4>Items</h4>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped align-top w-auto">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-content"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 
