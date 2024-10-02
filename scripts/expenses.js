@@ -3,15 +3,19 @@ let total_expenses = 0;
 
 const create_add_event = () => {
     const add_btn = document.getElementById("btn-addon");
-    add_btn.addEventListener("click", (e) => {
-        const item = document.getElementById("item").value;
-        const price = document.getElementById("price").value;
-        ++item_counter;
-        total_expenses += price;
-        const data = [item, price]
-        const table_content = document.getElementById("table-content");
-        table_content.appendChild(create_table_data(data));
+    add_btn.addEventListener("click", () => {
+        update_table();
     });
+}
+
+const update_table = () => {
+    const item = document.getElementById("item").value;
+    const price = document.getElementById("price").value;
+    ++item_counter;
+    total_expenses += Number(price);
+    const data = [item, price]
+    const table_content = document.getElementById("table-content");
+    table_content.appendChild(create_table_data(data));
 }
 
 const create_table_data = (data) => {
@@ -82,14 +86,13 @@ const add_delete_event = (btn) => {
         let data = btn_parent;
         let row = btn_parent.parentNode;
         let content = row.parentNode;
-        
+
         // price is 3rd column
         for (let i = 0; i < 2; ++i) {
             data = data.previousSibling;
         }
         content.removeChild(row);
         total_expenses -= data.value;
-        update_item_num
     });
 }
 
