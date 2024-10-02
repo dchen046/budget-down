@@ -50,7 +50,7 @@ const create_segment_controls = (parent, id, text) => {
     const input_attr = new Map([
         ["type", "radio"],
         ["class", "btn-check"],
-        ["name", "item-actions"],
+        ["name", `item-actions${item_counter}`],
         ["acutocomplete", "off"]
     ]);
 
