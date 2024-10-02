@@ -92,7 +92,8 @@ const add_delete_event = (btn) => {
             data = data.previousSibling;
         }
         content.removeChild(row);
-        total_expenses -= data.value;
+        total_expenses -= Number(data.innerText);
+        
     });
 }
 

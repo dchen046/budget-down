@@ -1,7 +1,10 @@
-function BudgetData(income, expenses) {
-    this.income = income;
-    this.expenses = expenses;
-    this.net = income - expenses;
+class BudgetData {
+    constructor(income, expenses) {
+        this.income = income;
+        this.expenses = expenses;
+        this.net = income - expenses;
+        this.percent = Math.round(100 * this.net / this.income);
+    }
 }
 
 let summary;
@@ -11,7 +14,8 @@ const create_calc_event = () => {
 
     calc_btn.addEventListener("click", () => {
         update_summary();
-        write_summary();
+        write_data_summary();
+        write_description();
     });
 }
 
@@ -21,15 +25,11 @@ const update_summary = () => {
     summary = new BudgetData(income, total_expenses);
 }
 
-const write_summary = () => {
+const write_data_summary = () => {
     const summary_content = document.getElementById("summary-contents");
-    // remove prev data if there is
-    if (summary_content.hasChildNodes()) {
-        summary_content.removeChild(summary_content.firstChild);
-    }
-    
-    const content = document.createElement("p");
-    summary_content.appendChild(content);
+
+    const data_content = document.getElementById("data-content");
+    data_content.innerHTML = "";
 
     const data = [
         `Montly Income : ${summary.income}`,
@@ -38,8 +38,21 @@ const write_summary = () => {
     ]
 
     for (let i = 0; i < data.length; ++i) {
-        content.innerText += data[i] + "\n";
+        data_content.innerText += data[i] + "\n";
     }
+}
+
+const write_description = () => {
+    const description_content = document.getElementById("description-content");
+    description_content.innerHTML = "";
+    if (summary.net > 0) {
+        description_content.innerText += `You are saving roughly ${summary.percent}% of your monthly income!\n`
+    } else if (summary.net < 0) {
+        description_content.innerText += `You are not saving anything! Please re-evaluate your life decisions and cut down on some expenses.\n`
+    } else {
+        description_content.innerText += "You have no monthly income. Get your money up not your funny up!"
+    }
+
 }
 
 create_calc_event();
